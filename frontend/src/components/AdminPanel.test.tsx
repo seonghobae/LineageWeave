@@ -106,6 +106,17 @@ describe("AdminPanel", () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
+  it("keeps a cleared copyright year visibly blank while editing", () => {
+    render(<AdminPanel {...baseProps} />);
+    fireEvent.click(screen.getByRole("button", { name: /Tenant settings/ }));
+    const yearInput = screen.getByRole("spinbutton", { name: "Tenant copyright year" });
+
+    fireEvent.change(yearInput, { target: { value: "" } });
+
+    expect(yearInput).toHaveValue(null);
+    expect(screen.getByRole("button", { name: "Save settings" })).toBeDisabled();
+  });
+
   it("does not submit unchanged settings through the form", () => {
     const fetchMock = vi.fn();
     vi.stubGlobal("fetch", fetchMock);

@@ -751,7 +751,8 @@ async def update_tenant_settings(
                     brand_name = EXCLUDED.brand_name,
                     system_name = EXCLUDED.system_name,
                     copyright_year = EXCLUDED.copyright_year,
-                    copyright_holder = EXCLUDED.copyright_holder
+                    copyright_holder = EXCLUDED.copyright_holder,
+                    updated_at = now()
                 """,
                 brand_name,
                 system_name,

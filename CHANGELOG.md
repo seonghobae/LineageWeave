@@ -18,6 +18,9 @@ All notable changes to this project are documented here. Format follows
 
 ### Fixed
 
+- Tenant settings now refresh their audit timestamp on every successful update,
+  and the year field stays visibly blank while an administrator edits it.
+
 - Tenant identity metadata migration now repairs blank legacy settings before
   adding non-empty and copyright-year constraints, so existing Compose volumes
   can replay the migration without losing valid tenant-provided values.
